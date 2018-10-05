@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 public class FileOps {
@@ -33,7 +34,7 @@ public class FileOps {
     }
 
     public String ReadFile(){
-        System.out.println("FileOps.ReadFile() method");
+        //System.out.println("FileOps.ReadFile() method");
         String strFileContent = "";
         String file = "";
         FileReader fr = null;
@@ -66,7 +67,7 @@ public class FileOps {
 
         try {
             // APPEND MODE SET HERE
-            bw = new BufferedWriter(new FileWriter(filePath, true));
+            bw = new BufferedWriter(new FileWriter(filePath, false));
             bw.write(message);
             //bw.newLine();
             bw.flush();
@@ -75,7 +76,7 @@ public class FileOps {
         } finally {                       // always close the file
             if (bw != null) try {
                 bw.close();
-            } catch (IOException eadd2) {
+            } catch (IOException e2) {
                 // just ignore it
             }
         } // end try/catch/finally
