@@ -27,13 +27,13 @@ public class Task {
     }
 
     public Task(int givenID, String givenNameProject, String givenTitleTask, Date givenDueDate){
-        int ID = givenID;
+        this.ID = givenID;
         boolean hasDone = false;
-        nameProject = givenNameProject;
-        titleTask = givenTitleTask;
+        this.nameProject = givenNameProject;
+        this.titleTask = givenTitleTask;
         //dateCreated = LocalDate.now();
-        dateCreated = new Date();
-        dateDueDate = givenDueDate;
+        this.dateCreated = new Date();
+        this.dateDueDate = givenDueDate;
     }
     @Override
     public String toString(){
@@ -50,7 +50,7 @@ public class Task {
     }
 */
 
-    public TaskList fromStrToObjTaskList(String strFileContent){
+    public static TaskList fromStrToObjTaskList(String strFileContent){
         Task myTask = new Task();
         //System.out.println("Init myTask");
         TaskList myTaskList = new TaskList();
@@ -98,6 +98,25 @@ public class Task {
         return myTaskList;
 
     }
+
+/*
+    */
+/*Comparator for getting max id value*//*
+
+    public static Comparator<Task> maxIDComparator = new Comparator<Task>() {
+
+        public int compare(Task t1, Task t2) {
+            String projectName1 = t1.getNameProject().toUpperCase();
+            String projectName2 = t2.getNameProject().toUpperCase();
+
+            //ascending order
+            return projectName1.compareTo(projectName2);
+
+            //descending order
+            //return projectName2.compareTo(projectName1);
+        }};
+
+*/
 
     /*Comparator for sorting the list by Project Name*/
     public static Comparator<Task> projectNameComparator = new Comparator<Task>() {

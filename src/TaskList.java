@@ -24,10 +24,11 @@ public class TaskList {
         return returnString;
     }
 
-    public void addTaskToList(Task newTask){
+    public TaskList addTaskToList(Task newTask){
 
         //System.out.println("TaskList.Add() method");
         listOfTasks.add(newTask);
+        return this;
     }
 
     public void Remove(){

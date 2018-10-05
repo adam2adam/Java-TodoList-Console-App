@@ -7,7 +7,10 @@ public enum CommandWord
     // A value for each command word along with its
     // corresponding user interface string.
     ADD("add"), REMOVE("remove"), EDIT("edit"),DONE("done"),
-    CREATE("create"), READ("read"), WRITE("write"), SAVE("save"), QUIT("quit"), HELP("help"), UNKNOWN("?");
+    //CREATE("create"),
+    READ("read"),
+    //WRITE("write"),
+    SAVE("save"), QUIT("quit"), HELP("help"), UNKNOWN("?");
 
     // The command string.
     private String commandString;
