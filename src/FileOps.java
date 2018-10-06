@@ -33,7 +33,7 @@ public class FileOps {
             return false;
     }
 
-    public String ReadFile(){
+    public String ReadFileNNNN(){
         //System.out.println("FileOps.ReadFile() method");
         String strFileContent = "";
         String file = "";
@@ -58,6 +58,38 @@ public class FileOps {
         return strFileContent;
     }
 
+    public String ReadFile(){
+        //System.out.println("FileOps.ReadFile() method");
+        String strFileContent = "";
+        String file = "";
+        FileReader fr = null;
+        BufferedReader bf = null;
+        try {
+            fr = new FileReader(filePath);
+            bf = new BufferedReader(fr);
+
+            while ((file = bf.readLine()) != null) {
+                strFileContent = strFileContent + file + "\n";
+            }
+
+        } catch (IOException e) {
+            System.out.println(e);
+        } finally{
+            if (fr != null){
+                try{
+                    fr.close();
+                } catch (IOException e) {}
+            }
+
+            if (bf != null){
+                try{
+                    bf.close();
+                } catch (IOException e) {}
+            }
+
+        }
+        return strFileContent;
+    }
 
 
 
@@ -66,7 +98,7 @@ public class FileOps {
         BufferedWriter bw = null;
 
         try {
-            // APPEND MODE SET HERE
+            // Append mode: false
             bw = new BufferedWriter(new FileWriter(filePath, false));
             bw.write(message);
             //bw.newLine();

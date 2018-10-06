@@ -1,9 +1,6 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class ToDoApp {
     private static Parser parser;
@@ -25,7 +22,7 @@ public class ToDoApp {
     // Check if file already exists
     public static void checkAndCreateFile() {
         //check file
-        System.out.println("Checking File");
+        //System.out.println("Checking File");
 
         //create new file if it doesn't exist
         if (fileToDoList.CheckFileExists() == false)
@@ -51,11 +48,7 @@ public class ToDoApp {
     }
 
     /**
-     *
-     */
-
-    /**
-     * Print out the opening message for the player.
+     * Print out the opening message
      */
     private static void printWelcome() {
         int hasDoneFalse = 0, hasDoneTrue = 0;
@@ -64,14 +57,14 @@ public class ToDoApp {
         //myTaskList = createdNewTask.fromStrToObjTaskList(testFileReadContent);
         myTaskList = Task.fromStrToObjTaskList(testFileReadContent);
         for(int i=0;i<myTaskList.getListSize();i++){
-            if(myTaskList.listOfTasks.get(i).hasDone == false)
+            if(myTaskList.listOfTasks.get(i).getHasDone() == false)
                 hasDoneFalse++;
             else
                 hasDoneTrue++;
         }
 
         //System.out.println("You have " + myTaskList.getListSize() + " tasks");
-        System.out.println("You have " + hasDoneFalse + " tasks todo and " + hasDoneTrue + " tasks are done!" );
+        System.out.println("You have " + hasDoneFalse + " tasks todo and " + hasDoneTrue + " tasks are done!\n" );
         parser.showCommands();
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
@@ -93,7 +86,9 @@ public class ToDoApp {
 
         switch (commandWord) {
             case ADD:
-                //int maxID;
+                wantedToAdd(myTaskList);
+
+                /*//int maxID;
                 //*** Getting Max ID
                 //Task maxIDTask = myTaskList.listOfTasks.stream().max(Comparator.comparingInt(m -> m.getID())).get();
 
@@ -101,7 +96,9 @@ public class ToDoApp {
                 if(myTaskList.getListSize() == 0){
                     maxID = -1;
                 } else {
-                    maxID = myTaskList.listOfTasks.stream().max(Comparator.comparingInt(m -> m.getID())).get().getID();
+                    maxID = myTaskList.listOfTasks.stream().
+                            max(Comparator.comparingInt(m -> m.getID())).get().getID();
+
                     System.out.println("Max valued ID of Tasks: " + maxID);
                 }
                 //***
@@ -116,13 +113,14 @@ public class ToDoApp {
                 //myTaskList.addTaskToList(createdNewTask);
                 System.out.println(myTaskList.toString());
 
-                //fileToDoList.WriteFile("TEEEEST!!!!\n");
+                //fileToDoList.WriteFile("TEEEEST!!!!\n");*/
                 break;
 
             case EDIT:
                 System.out.println("Edit task");
+                wantedToEdit(myTaskList, secondWord, strFileReadContent);
 
-                try {
+                /*try {
                     if (secondWord.equals("-u")) {
                         System.out.println("second word (-u): " + secondWord);
                         System.out.println(myTaskList.toString());
@@ -130,9 +128,10 @@ public class ToDoApp {
                         int updateID = Integer.valueOf(reader.nextLine());
                         System.out.println("Please update the task (ID: " + updateID + ")");
                         toUpdateTask = ToDoApp.createTask(updateID);
-                        myTaskList.listOfTasks.get(updateID).setNameProject(toUpdateTask.nameProject);
-                        myTaskList.listOfTasks.get(updateID).setTitleTask(toUpdateTask.titleTask);
-                        myTaskList.listOfTasks.get(updateID).setDateDueDate(toUpdateTask.dateDueDate);
+                        myTaskList.listOfTasks.get(updateID).setNameProject(toUpdateTask.getNameProject());
+                        myTaskList.listOfTasks.get(updateID).setTitleTask(toUpdateTask.getTitleTask());
+                        myTaskList.listOfTasks.get(updateID).setDateDueDate(toUpdateTask.getDueDate());
+                        toUpdateTask = null;
 
                     } else if (secondWord.equals("-m")) {
                         System.out.println("second word (-m): " + secondWord);
@@ -150,17 +149,19 @@ public class ToDoApp {
                         System.out.println(myTaskList.toString());
 
                     } else {
-                        System.out.println("second word : " + secondWord + "\n Wrong parameter! Try again");
+                        System.out.println("second word : " + secondWord + "\t Wrong parameter! Try again");
                     }
                 }catch (NullPointerException ex) {
+                    System.out.println("second word : " + secondWord + "\t Wrong parameter! Try again");
+                    //System.out.println(ex);
                     System.out.println("<----- PRINT FILE CONTENT AS STRING ----->");
                     System.out.println(strFileReadContent);
-                }
+                }*/
                 break;
 
             case READ:
-
-                try {
+                wantedToRead(myTaskList,secondWord, strFileReadContent);
+                /*try {
                     if (secondWord.equals("-p")) {
                         System.out.println("second word (-p): " + secondWord);
                         //Sort by Project Name
@@ -176,13 +177,13 @@ public class ToDoApp {
                     } else if (secondWord.equals("-l")){
                         System.out.println(myTaskList.toString());
                     } else {
-                        System.out.println("second word : " + secondWord + "\n Wrong paremeter! Try again");
+                        System.out.println("second word : " + secondWord + "\t Wrong paremeter! Try again");
                     }
 
                 }catch (NullPointerException ex) {
                     System.out.println("<----- PRINT FILE CONTENT AS STRING ----->");
                     System.out.println(strFileReadContent);
-                }
+                }*/
                 break;
             case SAVE:
                 System.out.println("Save to file");
@@ -202,11 +203,133 @@ public class ToDoApp {
         return wantToQuit;
     }
 
-    private static Task createTask(int maxID){
-
-
+    private static void wantedToAdd(TaskList myTaskList){
         //int maxID;
-        //boolean hasDone = false;
+        //*** Getting Max ID
+        //Task maxIDTask = myTaskList.listOfTasks.stream().max(Comparator.comparingInt(m -> m.getID())).get();
+
+        //if(strFileReadContent.equals("") || strFileReadContent.equals(null) || strFileReadContent.isEmpty()){
+        if(myTaskList.getListSize() == 0){
+            maxID = -1;
+        } else {
+            maxID = myTaskList.listOfTasks.stream().
+                    max(Comparator.comparingInt(m -> m.getID())).get().getID();
+
+            System.out.println("Max valued ID of Tasks: " + maxID);
+        }
+        //***
+
+        System.out.println("Create Task");
+        createdNewTask = ToDoApp.createTask(maxID);
+        System.out.println("TASK CREATED: " + createdNewTask.toString());
+
+        System.out.println("Add task or tasklist");
+        //createdNewTask.addTaskToList();
+        myTaskList = myTaskList.addTaskToList(createdNewTask);
+        //myTaskList.addTaskToList(createdNewTask);
+        System.out.println(myTaskList.toString());
+
+        //fileToDoList.WriteFile("TEEEEST!!!!\n");
+    }
+
+    private static void wantedToEdit(TaskList myTaskList, String secondWord, String strFileReadContent){
+        try {
+            if (secondWord.equals("-u")) {
+                System.out.println("second word (-u): " + secondWord);
+                System.out.println(myTaskList.toString());
+                System.out.println("Select the ID of Task that you want to update");
+                int updateID = Integer.valueOf(reader.nextLine());
+                try {
+                     Optional<Task> t = myTaskList.listOfTasks.stream()
+                            .filter(i -> i.getID() == updateID)
+                            .findFirst();
+                    if ( !t.equals(Optional.empty())){
+                        System.out.println("Please update the task (ID: " + updateID + ")");
+                        toUpdateTask = ToDoApp.createTask(updateID);
+                        myTaskList.listOfTasks.get(updateID).setNameProject(toUpdateTask.getNameProject());
+                        myTaskList.listOfTasks.get(updateID).setTitleTask(toUpdateTask.getTitleTask());
+                        myTaskList.listOfTasks.get(updateID).setDateDueDate(toUpdateTask.getDueDate());
+                        toUpdateTask = null;
+                    } else
+                        System.out.println("Wrong index! Please try again!");
+                } catch (IndexOutOfBoundsException iobedit){
+                System.out.println("Wrong index! Please try again!");
+            }
+
+
+            } else if (secondWord.equals("-m")) {
+                System.out.println("second word (-m): " + secondWord);
+                System.out.println(myTaskList.toString());
+                System.out.println("Select the ID of Task that you want to mark as Done");
+                int markDoneID = Integer.valueOf(reader.nextLine());
+                try {
+                    Optional<Task> t = myTaskList.listOfTasks.stream()
+                            .filter(i -> i.getID() == markDoneID)
+                            .findFirst();
+                    if ( !t.equals(Optional.empty()))
+                        myTaskList.listOfTasks.get(markDoneID).setHasDone();
+                    else
+                        System.out.println("Wrong index! Please try again!");
+                } catch (IndexOutOfBoundsException iobedit){
+                    System.out.println("Wrong index! Please try again!");
+                }
+
+            } else if (secondWord.equals("-r")) {
+                System.out.println("second word (-r): " + secondWord);
+                System.out.println(myTaskList.toString());
+                System.out.println("Select the ID of Task that you want to mark as Done");
+                int removeTaskID = Integer.valueOf(reader.nextLine());
+                try {
+                    Optional<Task> t = myTaskList.listOfTasks.stream()
+                            .filter(i -> i.getID() == removeTaskID)
+                            .findFirst();
+                    if ( !t.equals(Optional.empty()))
+                        myTaskList.listOfTasks.remove(removeTaskID);
+                    else
+                        System.out.println("Wrong index! Please try again!");
+                } catch (IndexOutOfBoundsException iobedit){
+                    System.out.println("Wrong index! Please try again!");
+                }
+                //System.out.println(myTaskList.toString());
+
+            } else {
+                System.out.println("second word : " + secondWord + "\t Wrong parameter! Try again");
+            }
+        }catch (NullPointerException ex) {
+            System.out.println("second word : " + secondWord + "\t Wrong parameter! Try again");
+            //System.out.println(ex);
+            System.out.println("<----- PRINT FILE CONTENT AS STRING ----->");
+            System.out.println(strFileReadContent);
+        }
+    }
+
+    private static void wantedToRead(TaskList myTaskList, String secondWord, String strFileReadContent){
+        try {
+            if (secondWord.equals("-p")) {
+                System.out.println("second word (-p): " + secondWord);
+                //Sort by Project Name
+                Collections.sort(myTaskList.listOfTasks, Task.projectNameComparator);
+                System.out.println("<----- PRINT FILE CONTENT AS TASK OBJECTS SORTED BY PROJECT NAME ----->");
+                System.out.println(myTaskList.toString());
+            } else if (secondWord.equals("-d")) {
+                System.out.println("second word (-d): " + secondWord);
+                //Sort by Due Date
+                Collections.sort(myTaskList.listOfTasks, Task.dueDateComparator);
+                System.out.println("<----- PRINT FILE CONTENT AS TASK OBJECTS SORTED BY DUE DATE ----->");
+                System.out.println(myTaskList.toString());
+            } else if (secondWord.equals("-l")){
+                System.out.println(myTaskList.toString());
+            } else {
+                System.out.println("second word : " + secondWord + "\t Wrong paremeter! Try again");
+            }
+
+        }catch (NullPointerException ex) {
+            System.out.println("<----- PRINT FILE CONTENT AS STRING ----->");
+            System.out.println(strFileReadContent);
+        }
+    }
+
+    private static Task createTask(int maxID){
         String nameProject;
         String titleTask;
         //Date dateCreated = new Date();
@@ -236,9 +359,7 @@ public class ToDoApp {
     }
 
     /**
-     * Print out some help information.
-     * Here we print some stupid, cryptic message and a list of the
-     * command words.
+     * Print out help information
      */
     private static void printHelp() {
         // System.out.println("You are lost. You are alone. You wander");
@@ -249,9 +370,7 @@ public class ToDoApp {
     }
 
     /**
-     * "Quit" was entered. Check the rest of the command to see
-     * whether we really quit the game.
-     *
+     * "Quit"
      * @return true, if this command quits the game, false otherwise.
      */
     private static boolean quit(Command command) {

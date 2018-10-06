@@ -5,12 +5,12 @@ import java.util.Date;
 
 
 public class Task {
-    public  int ID;
-    public boolean hasDone;
-    public String nameProject;
-    public String titleTask;
-    public Date dateCreated;
-    public Date dateDueDate;
+    private   int ID;
+    private boolean hasDone;
+    private String nameProject;
+    private String titleTask;
+    private Date dateCreated;
+    private Date dateDueDate;
 
     //public ArrayList<Task> listOfTasks = new ArrayList<>();
     public TaskList objTaskList = new TaskList();
@@ -37,8 +37,21 @@ public class Task {
     }
     @Override
     public String toString(){
-        String returnString = Integer.toString(this.ID) + "\t" + Boolean.toString(this.hasDone) + "\t" + this.nameProject + "\t" + this.titleTask + "\t" +
-                this.dateCreated.toString() + "\t" + this.dateDueDate.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.ID);
+        sb.append("\t");
+        sb.append(this.hasDone);
+        sb.append("\t");
+        sb.append(this.nameProject);
+        sb.append("\t");
+        sb.append(this.titleTask);
+        sb.append("\t");
+        sb.append(this.dateCreated.toString());
+        sb.append("\t");
+        sb.append(this.dateDueDate.toString());
+        //String returnString = Integer.toString(this.ID) + "\t" + Boolean.toString(this.hasDone) + "\t" + this.nameProject + "\t" + this.titleTask + "\t" +
+        //        this.dateCreated.toString() + "\t" + this.dateDueDate.toString();
+        String returnString = sb.toString();
         return returnString;
     }
 /*
@@ -163,6 +176,9 @@ public class Task {
     public String getNameProject(){
         return this.nameProject;
     }
+    public String getTitleTask(){return this.titleTask;}
+    public Date getDueDate(){return this.dateDueDate;}
+    public boolean getHasDone(){return this.hasDone;}
 
 
     public void setNameProject(String newNameProject){
