@@ -7,8 +7,7 @@ import java.util.HashMap;
 
 public class CommandWords
 {
-    // A mapping between a command word and the CommandWord
-    // associated with it.
+    // A mapping between a command word and the CommandWord associated with it.
     private HashMap<String, CommandWord> validCommands;
 
     /**
@@ -27,8 +26,7 @@ public class CommandWords
     /**
      * Find the CommandWord associated with a command word.
      * @param commandWord The word to look up.
-     * @return The CommandWord correspondng to commandWord, or UNKNOWN
-     *         if it is not a valid command word.
+     * @return The CommandWord correspondng to commandWord, or UNKNOWN if it is not a valid command word.
      */
     public CommandWord getCommandWord(String commandWord)
     {
@@ -63,9 +61,9 @@ public class CommandWords
 
     public void showCommandsMenu(){
         //this.showAll();
-        System.out.println("read:   Read Task List from File. The following option is available:\n\t-d\tby Date\n\t-p\tby Project Name\n\t-l\tlist unsaved Task List(From memory!!!)");
+        System.out.println("read:   Read Task List from File. The following option is available:\n\t-d\tsort by Due Date\n\t-p\tsort by Project Name\n\t-l\tlist unsaved Task List(From memory!!!)");
         System.out.println("add:    Add New Task");
-        System.out.println("edit:   Edit Task. The following option is available:\n\t-u\tfor update\n\t-m\tmark as done\n\t-r\tremove");
+        System.out.println("edit:   Edit Task. The following option is available:\n\t-u\tto update parameters of a task\n\t-m\tmark as done(or undone)\n\t-r\tto remove a task");
         System.out.println("save:   Save Task List to File");
         System.out.println("help:   Help");
         System.out.println("quit:   Quit");

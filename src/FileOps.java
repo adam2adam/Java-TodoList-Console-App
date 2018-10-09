@@ -1,12 +1,17 @@
 import java.io.*;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 
-public class FileOps {
+/**
+ * All of the file operations are here
+ */
+
+    public class FileOps {
     private File file;
     private String filePath = "ToDoListApp_File.txt";
     //public String strFileContent = "";
 
+    /**
+     * Create new file
+     */
     public void CreateFile(){
         System.out.println("FileOps.CreateFile() method");
 
@@ -25,6 +30,10 @@ public class FileOps {
         }
     }
 
+    /**
+     * Check if file already exists or not
+     * @return
+     */
     public boolean CheckFileExists(){
         File f = new File(filePath);
         if(f.exists() && !f.isDirectory())
@@ -32,7 +41,7 @@ public class FileOps {
         else
             return false;
     }
-
+/*
     public String ReadFileNNNN(){
         //System.out.println("FileOps.ReadFile() method");
         String strFileContent = "";
@@ -57,7 +66,12 @@ public class FileOps {
         }
         return strFileContent;
     }
+*/
 
+    /**
+     * Read file
+     * @return
+     */
     public String ReadFile(){
         //System.out.println("FileOps.ReadFile() method");
         String strFileContent = "";
@@ -80,19 +94,19 @@ public class FileOps {
                     fr.close();
                 } catch (IOException e) {}
             }
-
             if (bf != null){
                 try{
                     bf.close();
                 } catch (IOException e) {}
             }
-
         }
         return strFileContent;
     }
 
-
-
+    /**
+     * Write to file
+     * @param message
+     */
     public void WriteFile(String message){
         System.out.println("FileOps.WriteFile() method");
         BufferedWriter bw = null;
@@ -113,7 +127,7 @@ public class FileOps {
             }
         } // end try/catch/finally
     }
-
+/*
     public void SaveFile(){
         System.out.println("FileOps.SaveFile() method");
     }
@@ -121,4 +135,5 @@ public class FileOps {
     public void QuitFile(){
         System.out.println("FileOps.QuitFile() method");
     }
+    */
 }

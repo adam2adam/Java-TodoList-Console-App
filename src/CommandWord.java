@@ -1,16 +1,11 @@
 /**
  * Representations for all the valid command words for app
- * along with a string in a particular language.
  */
 public enum CommandWord
 {
-    // A value for each command word along with its
-    // corresponding user interface string.
-    ADD("add"), REMOVE("remove"), EDIT("edit"),DONE("done"),
-    //CREATE("create"),
-    READ("read"),
-    //WRITE("write"),
-    SAVE("save"), QUIT("quit"), HELP("help"), UNKNOWN("?");
+    // A value for each command word along with its corresponding user interface string.
+    //REMOVE("remove"), CREATE("create"), WRITE("write"), DONE("done"),
+    READ("read"), ADD("add"), EDIT("edit"), SAVE("save"), HELP("help"), QUIT("quit"), UNKNOWN("?");
 
     // The command string.
     private String commandString;
