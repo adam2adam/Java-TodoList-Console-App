@@ -12,6 +12,32 @@ It has a text based user interface via the command-line. It uses a text file to 
 
 ## User Manual
 
+![Main Menu](mainMenuScreenshot.png)
+
+* This might be clear enough :) Isn't it?:
+
+##### List tasks
+'read'     -> Read Task List from File. The following option is available:
+'read -d'	 -> sort by Due Date
+'read	-p'	 -> sort by Project Name
+'read	-l'	 -> list unsaved Task List(From memory!!!)
+
+##### Add new task to list
+'add'      -> Add New Task
+
+##### Edit Task. The following option is available:
+'edit'     -> (Not workes alone. There should be a parameter!)
+	-u	to update parameters of a task
+	-m	mark as done(or undone)
+	-r	to remove a task
+##### Save tasks to file
+'save'     -> Save Task List to File
+##### Help (Shows Main Menu)
+'help'     -> Help
+##### Quit without saving
+'quit'     -> Quit
+Type 'help' if you need help.
+
 
 ## Authors
 
