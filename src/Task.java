@@ -2,6 +2,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Task class for Task object
@@ -46,6 +47,52 @@ public class Task {
         //dateCreated = LocalDate.now();
         this.dateCreated = new Date();
         this.dateDueDate = givenDueDate;
+    }
+    public Task(int givenID, String givenNameProject, String givenTitleTask, Date givenCreatedDate, Date givenDueDate){
+        this.ID = givenID;
+        boolean hasDone = false;
+        this.nameProject = givenNameProject;
+        this.titleTask = givenTitleTask;
+        //dateCreated = LocalDate.now();
+        this.dateCreated = givenCreatedDate;
+        this.dateDueDate = givenDueDate;
+    }
+
+    /**
+     * Override method of equals. It was required for Testing - assertEquals() method of junit
+     * @param o
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task)) return false;
+        Task task = (Task) o;
+        return getID() == task.getID() &&
+                getHasDone() == task.getHasDone() &&
+                Objects.equals(getNameProject(), task.getNameProject()) &&
+                Objects.equals(getTitleTask(), task.getTitleTask()) &&
+                Objects.equals(dateCreated, task.dateCreated) &&
+                Objects.equals(dateDueDate, task.dateDueDate);
+    }
+
+    /**
+     * Override method of hashCode. It was required for Testing - assertEquals() method of junit
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getID(), getHasDone(), getNameProject(), getTitleTask(), dateCreated, dateDueDate);
+    }
+
+    public static Task getDefaultInstance(){
+        SimpleDateFormat myOutputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+        try {
+            return new Task(99, "Default Project Name", "Default Title",myOutputFormat.parse("Sat Nov 11 11:11:00 CET 1111"),myOutputFormat.parse("Sat Nov 11 11:11:00 CET 1111"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return new Task();
+        }
     }
 
     /**

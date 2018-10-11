@@ -63,7 +63,7 @@ public class ToDoApp {
             else
                 hasDoneTrue++;
         }
-        System.out.println("You have " + hasDoneFalse + " tasks todo and " + hasDoneTrue + " tasks are done!\n" );
+        System.out.println("--¢> You have " + hasDoneFalse + " tasks todo and " + hasDoneTrue + " tasks are done!\n" );
         parser.showCommands();
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
@@ -273,17 +273,21 @@ public class ToDoApp {
      * @param maxID
      * @return
      */
-    private static Task createTask(int maxID){
-        String nameProject;
-        String titleTask;
+    public static Task createTask(int maxID){
+        String nameProject = "";
+        String titleTask = "";
         Date dateDueDate = null;
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         // Read the properties of new Task
-        System.out.print("What is the project name?\n->createTask>>> ");
-        nameProject = reader.nextLine();
-        System.out.print("What is the task title?\n->createTask>>> ");
-        titleTask = reader.nextLine();
-        System.out.print("What is the due date? (yyyy-MM-ddTHH:mm) Example: " + myFormat.format(new Date()) + "\n->createTask>>> ");
+        while(nameProject.trim().equals("") || nameProject.isEmpty() || nameProject.trim().equals(" ")) {
+            System.out.print("What is the Project Name?\n->createTask>>> ");
+            nameProject = reader.nextLine();
+        }
+        while(titleTask.trim().equals("") || titleTask.isEmpty() || titleTask.trim().equals(" ") ) {
+            System.out.print("What is the Task Title?\n->createTask>>> ");
+            titleTask = reader.nextLine();
+        }
+        System.out.print("What is the Due Date? (yyyy-MM-ddTHH:mm) Example: " + myFormat.format(new Date()) + "\n->createTask>>> ");
         while (dateDueDate == null) {
             String line = reader.nextLine();
             try {

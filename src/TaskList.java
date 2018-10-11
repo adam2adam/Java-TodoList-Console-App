@@ -23,6 +23,12 @@ public class TaskList {
         return this;
     }
 
+    public int getListSize(){
+        return listOfTasks.size();
+    }
+
+
+    /*
     public void Remove(){
         System.out.println("TaskList.Remove() method");
     }
@@ -34,8 +40,7 @@ public class TaskList {
     public void Done(){
         System.out.println("TaskList.Done() method");
     }
+*/
 
-    public int getListSize(){
-        return listOfTasks.size();
-    }
+
 }
