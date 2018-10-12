@@ -12,7 +12,7 @@ It has a text based user interface via the command-line. It uses a text file to 
 
 ## User Manual
 
-![Main Menu](mainMenuScreenshot1.png)
+![Main Menu](MainMenuScreenshot.png)
 
 * This might be clear enough :) Isn't it?:
 

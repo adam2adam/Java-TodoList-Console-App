@@ -134,6 +134,7 @@ public class ToDoApp {
         // Add new Task to TaskList
         //System.out.println("Add task to tasklist");
         myTaskList = myTaskList.addTaskToList(createdNewTask);
+        System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
         System.out.println(myTaskList.toString());
     }
 
@@ -148,6 +149,7 @@ public class ToDoApp {
             // Edit - Update Task (regarding to Task ID)
             if (secondWord.equals("-u")) {
                 System.out.println("second word (-u): " + secondWord);
+                System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                 System.out.println(myTaskList.toString());
                 System.out.println("Select the ID of Task that you want to update");
                 int updateID = Integer.valueOf(reader.nextLine());
@@ -175,6 +177,7 @@ public class ToDoApp {
             // Edit - Mark as Done
             } else if (secondWord.equals("-m")) {
                 System.out.println("second word (-m): " + secondWord);
+                System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                 System.out.println(myTaskList.toString());
                 System.out.println("Select the ID of Task that you want to mar as done or not");
                 int markDoneID = Integer.valueOf(reader.nextLine());
@@ -187,6 +190,7 @@ public class ToDoApp {
                     if ( !t.equals(Optional.empty())) {
                         int indexOfTask = myTaskList.listOfTasks.indexOf(t.get());
                         myTaskList.listOfTasks.get(indexOfTask).setHasDone();
+                        System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                         System.out.println(myTaskList.toString());
                     }
                     // If the entered ID is wrong
@@ -198,6 +202,7 @@ public class ToDoApp {
             // Edit - Remove
             } else if (secondWord.equals("-r")) {
                 System.out.println("second word (-r): " + secondWord);
+                System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                 System.out.println(myTaskList.toString());
                 System.out.println("Select the ID of Task that you want to remove");
                 int removeTaskID = Integer.valueOf(reader.nextLine());
@@ -210,6 +215,7 @@ public class ToDoApp {
                     if (!t.equals(Optional.empty())) {
                         int indexOfTask = myTaskList.listOfTasks.indexOf(t.get());
                         myTaskList.listOfTasks.remove(indexOfTask);
+                        System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                         System.out.println(myTaskList.toString());
                         // If the entered ID is wrong
                     }else
@@ -244,6 +250,7 @@ public class ToDoApp {
                 //Sort by Project Name
                 Collections.sort(myTaskList.listOfTasks, Task.projectNameComparator);
                 System.out.println("<----- PRINT TASK OBJECTS WHICH ARE ON THE AIR SORTED BY PROJECT NAME ----->");
+                System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                 System.out.println(myTaskList.toString());
             // Sort tasks by Due Date
             } else if (secondWord.equals("-d")) {
@@ -251,10 +258,12 @@ public class ToDoApp {
                 //Sort by Due Date
                 Collections.sort(myTaskList.listOfTasks, Task.dueDateComparator);
                 System.out.println("<----- PRINT TASK OBJECTS WHICH ARE ON THE AIR SORTED BY DUE DATE ----->");
+                System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                 System.out.println(myTaskList.toString());
             } // List the tasks which are in the memory (Not written to file yet!!!)
             else if (secondWord.equals("-l")){
                 System.out.println("<----- PRINT TASK OBJECTS WHICH ARE ON THE AIR! ----->");
+                System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
                 System.out.println(myTaskList.toString());
             } //Wrong parameter
             else {

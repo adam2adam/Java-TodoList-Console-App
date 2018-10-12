@@ -108,7 +108,7 @@ import java.io.*;
      * @param message
      */
     public void WriteFile(String message){
-        System.out.println("FileOps.WriteFile() method");
+        //System.out.println("FileOps.WriteFile() method");
         BufferedWriter bw = null;
 
         try {
@@ -117,6 +117,7 @@ import java.io.*;
             bw.write(message);
             //bw.newLine();
             bw.flush();
+            System.out.println("File saved");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {                       // always close the file

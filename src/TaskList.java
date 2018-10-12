@@ -11,7 +11,7 @@ public class TaskList {
     @Override
     public String toString(){
         String returnString = "";
-        System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
+        //System.out.println("|ID|hasDone|ProjectName|TaskTitle|DateCreated|DateDue|");
         for(Task tmpTask:listOfTasks)
             returnString = returnString + tmpTask.toString() + "\n";
         return returnString;

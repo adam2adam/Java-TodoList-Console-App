@@ -61,9 +61,9 @@ public class CommandWords
 
     public void showCommandsMenu(){
         //this.showAll();
-        System.out.println("read:   Read Task List from File. The following option is available:\n\t-d\tsort by Due Date\n\t-p\tsort by Project Name\n\t-l\tlist unsaved Task List(From memory!!!)");
+        System.out.println("read:   Read Task List from File. The following options are available:\n\t-d\tsort by Due Date\n\t-p\tsort by Project Name\n\t-l\tlist unsaved Task List(From memory!!!)");
         System.out.println("add:    Add New Task");
-        System.out.println("edit:   Edit Task. The following option is available:\n\t-u\tto update parameters of a task\n\t-m\tmark as done(or undone)\n\t-r\tto remove a task");
+        System.out.println("edit:   Edit Task. The following options are available:\n\t-u\tto update parameters of a task\n\t-m\tmark as done(or undone)\n\t-r\tto remove a task");
         System.out.println("save:   Save Task List to File");
         System.out.println("help:   Help");
         System.out.println("quit:   Quit");
