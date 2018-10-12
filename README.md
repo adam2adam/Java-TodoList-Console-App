@@ -12,7 +12,7 @@ It has a text based user interface via the command-line. It uses a text file to 
 
 ## User Manual
 
-![Main Menu](mainMenuScreenshot.png) <!-- .element height="75%" width="75%" -->
+![Main Menu](mainMenuScreenshot1.png)
 
 * This might be clear enough :) Isn't it?:
 
