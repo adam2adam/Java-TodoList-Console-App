@@ -14,7 +14,7 @@ It has a text based user interface via the command-line. It uses a text file to 
 
 ![Main Menu](MainMenuScreenShot.png)
 
-* This might be clear enough :) Isn't it?:
+* This might be clear enough :) Isn't it?: 
 
 ##### List tasks
 'read'       -> Read Task List from File. The following option is available:
