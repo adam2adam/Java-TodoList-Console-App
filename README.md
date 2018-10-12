@@ -39,6 +39,10 @@ It has a text based user interface via the command-line. It uses a text file to 
 Type 'help' if you need help.
 
 
+## Class Diagram
+
+![Class Diagram](ClassDiagram.png)
+
 ## Authors
 
 * **Adem Sezer** - *Initial work* - [adam2adam](https://github.com/adam2adam)
