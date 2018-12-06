@@ -1,5 +1,5 @@
 # Java-TodoList-Console-App
-Java ToDoList Application as an IP 
+Java ToDoList Application
 #### @version v1.0
 
 The application allows a user to create new tasks, assign them a title and due date, and choose a project for that task to belong to. 
